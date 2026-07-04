@@ -9,7 +9,7 @@ Produce software product demos, feature-announcement videos, and marketing anima
 ## Install
 
 - **From the catalog:** [skillme.dev/pack/remotion-video-production](https://skillme.dev/pack/remotion-video-production) — install the whole pack into Claude in one step.
-- **With the skills CLI:** `npx skills add aouellets/remotion-video-production`
+- **With the skills CLI:** `npx skills add SkillMedev/remotion-video-production`
 - **Manually:** copy any `skills/<slug>/SKILL.md` into your Claude skills directory.
 
 ## Skills in this pack
