@@ -18,10 +18,10 @@ with Claude," "start a video project" — run this skill.
 Remotion renders with headless Chromium, so check Node before scaffolding:
 
 ```bash
-node --version   # need >= 16; recommend 18 LTS or 20 LTS
+node --version   # need >= 16; prefer an active LTS release
 ```
 
-If Node is older than 16, stop and tell the user to upgrade (nvm: `nvm install 20 && nvm use 20`).
+If Node is older than 16, stop and tell the user to upgrade (nvm: `nvm install --lts && nvm use --lts`).
 Also confirm `npx` is available (ships with npm 5.2+).
 
 ## Step 2 — Scaffold the project
@@ -48,7 +48,7 @@ npx remotion skills add remotion
 ```
 
 This drops Remotion's agent-skill files into the project. If the command is
-unavailable in the installed Remotion version, point the user at the latest
+unavailable in the installed Remotion version, point the user at a newer
 `@remotion/cli` and continue — it is a convenience, not a hard dependency.
 
 ## Step 4 — Establish folder conventions
@@ -97,6 +97,11 @@ import { registerRoot } from "remotion";
 import { RemotionRoot } from "./Root";
 registerRoot(RemotionRoot);
 ```
+
+Sensible defaults to register with: 30 fps and 1920x1080 for landscape product
+videos (1080x1920 for vertical social), and short durations — 90 frames at
+30 fps is 3 seconds, and most product demo videos land between 15 and 60
+seconds (450-1800 frames).
 
 ## Step 5 — Load a Google font
 
@@ -150,9 +155,12 @@ Make sure it is registered in `src/Root.tsx` (Step 4), then render it:
 npx remotion render src/index.ts HelloWorld out/smoke-test.mp4
 ```
 
-If `out/smoke-test.mp4` plays a fading-in title, the environment is good. If the
-render fails, it is almost always (a) Chromium download/permissions, (b) the
-composition not registered in `Root.tsx`, or (c) a Node version issue from Step 1.
+The first render downloads headless Chromium (a few hundred MB — expect a one-time
+wait of a few minutes on a normal connection); after that, this 90-frame smoke test
+should render in well under a minute. If `out/smoke-test.mp4` plays a fading-in
+title, the environment is good. If the render fails, it is almost always
+(a) Chromium download/permissions, (b) the composition not registered in
+`Root.tsx`, or (c) a Node version issue from Step 1.
 
 ## Step 7 — Launch Remotion Studio for preview
 
@@ -165,6 +173,31 @@ npx remotion studio
 This serves the Studio at **http://localhost:3000**. The `create-video` template
 also wires `npm run dev` to the same thing. Leave Studio running while iterating —
 edits to composition files hot-reload instantly.
+
+## Deliverable
+
+The user walks away with a working Remotion project: the scaffolded repo with the
+`src/compositions/` + `public/assets/` layout in place, Remotion agent skills
+installed, a Google font wired, a registered smoke-test composition, a rendered
+`out/smoke-test.mp4` that actually plays, and Remotion Studio running for preview.
+Nothing is "set up" until the smoke-test MP4 exists and plays.
+
+## Do NOT
+
+- Do not skip the Node check and scaffold anyway — a sub-16 Node fails deep inside the Chromium render with a confusing error, not at install time.
+- Do not declare setup done without rendering the smoke test; a project that compiles but has never produced an MP4 has not proven the Chromium pipeline works.
+- Do not put compositions or assets in ad-hoc locations — later skills (`remotion-compose`, `remotion-render`) rely on `src/compositions/` and `public/assets/` existing.
+- Do not reference assets by relative path or URL; use `staticFile()` from `public/`, or renders will work locally and break elsewhere.
+- Do not use system or CSS-imported fonts for on-screen text — without `loadFont()` blocking, text can render in a fallback font on the render machine.
+- Do not pick a feature-heavy template for product videos; the Blank template avoids carrying demo code the user must delete later.
+
+## Quality bar
+
+- `node --version` is >= 16 and was checked before scaffolding.
+- `out/smoke-test.mp4` exists and plays a fading-in title.
+- The folder conventions exist exactly as specified, and the smoke composition is registered in `src/Root.tsx`.
+- Text renders through `@remotion/google-fonts` with `loadFont()`, not a system fallback.
+- Remotion Studio launches at localhost:3000 and hot-reloads an edit.
 
 ## Handoff
 
