@@ -1,8 +1,8 @@
 # Remotion Video Production
 
-**Turn natural language briefs into rendered MP4s using Claude Code and Remotion — covers project setup, composition generation, and the render/iterate loop.** — built in-house by [Skill&nbsp;Me](https://skillme.dev).
+**Turn natural language briefs into rendered MP4s using Claude Code and Remotion - covers project setup, composition generation, and the render/iterate loop.** — built in-house by [Skill&nbsp;Me](https://skillme.dev).
 
-Produce software product demos, feature-announcement videos, and marketing animations without a video editor or motion-design background. Three skills that work in sequence — Remotion Setup scaffolds a project wired for Claude Code Agent Skills, Remotion Compose turns a natural-language brief into a complete React/TypeScript composition, and Remotion Render handles export plus the feedback-and-re-render loop — and each is independently useful once a project is underway. Built for developers, product teams, and solo founders who want to describe a video and get a rendered MP4 back.
+Produce software product demos, feature-announcement videos, and marketing animations without a video editor or motion-design background. Three skills that work in sequence - Remotion Setup scaffolds a project wired for Claude Code Agent Skills, Remotion Compose turns a natural-language brief into a complete React/TypeScript composition, and Remotion Render handles export plus the feedback-and-re-render loop - and each is independently useful once a project is underway. Built for developers, product teams, and solo founders who want to describe a video and get a rendered MP4 back.
 
 ⭐ **If this is useful, star the repo** — it's how we gauge what to build next.
 
@@ -14,9 +14,9 @@ Produce software product demos, feature-announcement videos, and marketing anima
 
 ## Skills in this pack
 
-- **[Remotion Setup](skills/remotion-setup/SKILL.md)** — Scaffolds a new Remotion video project wired for Claude Code Agent Skills — Node check, create-video scaffold, skills install, folder conventions, Google Fonts, and a smoke-test render.
-- **[Remotion Compose](skills/remotion-compose/SKILL.md)** — Turns a natural-language video brief into a complete, ready-to-preview Remotion composition — extracts duration, scenes, brand colors, aspect ratio, and real copy; plans the frame budget; and writes data-driven React/TypeScript using useCurrentFrame, interpolate, spring, AbsoluteFill, and Sequence, registered in Root.tsx.
-- **[Remotion Render](skills/remotion-render/SKILL.md)** — Renders a Remotion composition to MP4 and runs the edit-and-re-render loop — CLI render commands, 1080p/4K/9:16 presets, concurrency tuning, codec selection, batch variants from a JSON data file, and Lambda for cloud rendering.
+- **[Remotion Setup](skills/remotion-setup/SKILL.md)** — Scaffolds a new Remotion video project wired for Claude Code Agent Skills - Node check, create-video scaffold, skills install, folder conventions, Google Fonts, and a smoke-test render.
+- **[Remotion Compose](skills/remotion-compose/SKILL.md)** — Turns a natural-language video brief into a complete, ready-to-preview Remotion composition - extracts duration, scenes, brand colors, aspect ratio, and real copy; plans the frame budget; and writes data-driven React/TypeScript using useCurrentFrame, interpolate, spring, AbsoluteFill, and Sequence, registered in Root.tsx.
+- **[Remotion Render](skills/remotion-render/SKILL.md)** — Renders a Remotion composition to MP4 and runs the edit-and-re-render loop - CLI render commands, 1080p/4K/9:16 presets, concurrency tuning, codec selection, batch variants from a JSON data file, and Lambda for cloud rendering.
 
 ## License
 
